@@ -1,4 +1,4 @@
-#ifndef OOP_HELPER_H
+#ifndef OOP_APARTMENT_H // if not defined
 #define OOP_HELPER_H
 
 
@@ -8,4 +8,4 @@ public:
 };
 
 
-#endif //OOP_HELPER_H
+#endif //OOP_HELPER_H end if not defined

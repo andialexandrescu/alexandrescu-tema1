@@ -1,13 +1,49 @@
 #include <iostream>
 #include <array>
 
-#include <Helper.h>
+#include <Apartment.h>
+#include <User.h>
+#include <Reservation.h>
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, world!\n";
-    std::array<int, 100> v{};
-    int nr;
-    std::cout << "Introduceți nr: ";
+
+    Apartment Ap1("Benidorm, Spain", "Rental Unit", "Apartment Ideal to enjoy Playa de Benidorm, in the heart of Playa de Poniente. Views from the living room to the ocean and the Isle of Benidorm.", 4, 823);
+    Apartment Ap2("Santona, Spain", "Duplex", "Unique oceanfront location within a few meters from the beach. Very large terrace to enjoy.", 5, 795);
+    Apartment Ap3("Altea, Spain", "Villa", "Beautiful villa with a private pool and a hot tub in Altea’s prime location, on Don Cayo golf course and nestled away from highway noise. Ideal for big families or groups.", 6, 950);
+    Apartment Ap4("Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 1466);
+    Apartment Ap5("Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 701);
+    Ap1.printApartment();
+    std::cout<<endl;
+    Ap2.printApartment();
+    std::cout<<endl;
+    Ap3.printApartment();
+    std::cout<<endl;
+    Ap4.printApartment();
+    std::cout<<endl;
+
+
+    std::cout<<"Welcome to our apartment rental management system! Are you looking to rent an apartment while travelling OR would you like to put your apartment up for rent? Then, you're in the right place. Press any key to continue browsing.";
+    std::cin.get();
+    std::cout<<"An interactive menu will be displayed to improve your user experience. Please select your choice of browsing:"<<endl;
+    int choice_differentiate_users;
+    std::cout<<"1. Search for an apartment to rent\n2. Update/ upload details about an apartment I own"<<endl;
+    std::cin>>choice_differentiate_users;
+    std::cout<<endl<<"Loading..."<<endl;
+    switch(choice_differentiate_users)
+    {
+        case 1:
+            cout<<"Tenant's view";
+            break;
+        case 2:
+            cout<<"Host View";
+            break;
+        default:
+            cout<<"Invalid"<<endl;
+            return 1;
+    }
+
     /////////////////////////////////////////////////////////////////////////
     /// Observație: dacă aveți nevoie să citiți date de intrare de la tastatură,
     /// dați exemple de date de intrare folosind fișierul tastatura.txt
@@ -28,17 +64,7 @@ int main() {
     /// program care merg (și să le evitați pe cele care nu merg).
     ///
     /////////////////////////////////////////////////////////////////////////
-    std::cin >> nr;
-    /////////////////////////////////////////////////////////////////////////
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "v[" << i << "]     = "<<std::endl;
-        std::cin >> v[i];
-    }
-    std::cout << "\n\n\n";
-    std::cout << "Am citit de la tastatură " << nr << " elemente:\n";
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "- " << v[i] << "\n";
-    }
+
     ///////////////////////////////////////////////////////////////////////////
     /// Pentru date citite din fișier, NU folosiți tastatura.txt. Creați-vă voi
     /// alt fișier propriu cu ce alt nume doriți.
@@ -50,8 +76,6 @@ int main() {
     ///////////////////////////////////////////////////////////////////////////
     ///                Exemplu de utilizare cod generat                     ///
     ///////////////////////////////////////////////////////////////////////////
-    Helper helper;
-    helper.help();
     ///////////////////////////////////////////////////////////////////////////
     return 0;
 }
