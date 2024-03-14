@@ -31,7 +31,7 @@ int main() {
     std::cin >> nr;
     /////////////////////////////////////////////////////////////////////////
     for(int i = 0; i < nr; ++i) {
-        std::cout << "v[" << i << "] = "<<std::endl;
+        std::cout << "v[" << i << "]     = "<<std::endl;
         std::cin >> v[i];
     }
     std::cout << "\n\n";
