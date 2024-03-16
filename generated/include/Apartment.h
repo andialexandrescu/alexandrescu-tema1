@@ -15,7 +15,7 @@ private:
     //vector<string> arr_amenities;
     //vector<string> arr_sleeping_layout;
 public:
-    Apartment(std::string l = "invalid", std::string t = "invalid", std::string desc = "invalid", int k_rooms = 0, int p = 0);// constructor definit explicit
+    Apartment(std::string l = "-", std::string t = "-", std::string desc = "-", int k_rooms = 0, int p = 0);// constructor definit explicit
     ~Apartment();
     void printApartment();
     int getApartmentDetails();

@@ -4,6 +4,7 @@
 #include <Apartment.h>
 #include <User.h>
 #include <Reservation.h>
+#include <vector>
 
 using namespace std;
 
@@ -15,29 +16,47 @@ int main() {
     Apartment Ap4("Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 1466);
     Apartment Ap5("Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 701);
     Ap1.printApartment();
-    std::cout<<endl;
+    cout<<endl;
     Ap2.printApartment();
-    std::cout<<endl;
+    cout<<endl;
     Ap3.printApartment();
-    std::cout<<endl;
+    cout<<endl;
     Ap4.printApartment();
-    std::cout<<endl;
+    cout<<endl;
 
+    User no1;
+    cout<<no1<<endl;
+    User no2("louisarletta99", "blu3skies", "louis.arletta@gmail.com", "Louis", "Arletta", 234513427, "Puerta 728 Salida Andres Sisneros, 65, Malaga, Bal 26010", "+340223419028"); // https://testingbot.com/free-online-tools/random-address-generator
+    cout<<no2<<endl;
+    User no3("yours_celestina", "swimmingenthusiast", "celestina_genevra2005@yahoo.com", "Celestina", "Genevra", 28523452, "Puerta 189 Ramal Anita Deleon 3, Sanlucar de Barrameda, Bal 74244", "+3465234563782");
+    cout<<no3<<endl;
+    User current_user;
+    cin>>current_user;
+    cout<<endl<<current_user<<endl;
+    vector<User> vec = {no2, no3, current_user};
+    for(const auto &user: vec)
+    {
+        cout<<user<<endl;
+    }
 
     std::cout<<"Welcome to our apartment rental management system! Are you looking to rent an apartment while travelling OR would you like to put your apartment up for rent? Then, you're in the right place. Press any key to continue browsing.";
     std::cin.get();
     std::cout<<"An interactive menu will be displayed to improve your user experience. Please select your choice of browsing:"<<endl;
+
     int choice_differentiate_users;
-    std::cout<<"1. Search for an apartment to rent\n2. Update/ upload details about an apartment I own"<<endl;
+    std::cout<<"1. Search for an apartment to rent\n2. Update/ upload details about an apartment I own\n3. Exit"<<endl;
     std::cin>>choice_differentiate_users;
     std::cout<<endl<<"Loading..."<<endl;
     switch(choice_differentiate_users)
     {
         case 1:
             cout<<"Tenant's view";
+            current_user.loginMenu(current_user);
             break;
         case 2:
             cout<<"Host View";
+            break;
+        case 3:
             break;
         default:
             cout<<"Invalid"<<endl;
