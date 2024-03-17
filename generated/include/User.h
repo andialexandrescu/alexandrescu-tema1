@@ -3,60 +3,39 @@
 
 #include <string>
 #include <cstring>
-#include "Card.h"
+#include <list>
+#include "Reservation.h"
 
 class User{
 private:
-    // a good practice for creating users would be limiting the maximum length of an username and password, therefore these variables will be allocated dynamically as type char, compared to the rest which are of type string
-    char *username;
-    char *password;
-    char *email;
+    char *username; // academic example since otherwise the destructor would've been useless
+    // usage: regardless of how many characters are from input, the username will only contain the first 10
+    std::string password;
+    std::string email;
     std::string first_name;
     std::string last_name;
-    int id_number;
+    long long id_number;
     std::string id_residence;
     std::string phone_number;
-    int user_choice;
-    Card default_card_details;
+    ///std::list<Reservation> list_of_reservations_per_user;
 public:
     // overloaded constructors:
-    User();
-    //User(const char *client, const char *pswd);
-    //User(const char *client, const char *pswd, const char *contact_email);
-    User(const char *client, const char *pswd, const char *contact_email, const std::string& fname, const std::string& lname, int id, const std::string& residence, const std::string& phone);
-    //User(const User &other_obj); // copy constructor
+    User(); // init constructor
+    User(const char *client, const std::string &pswd, const std::string &contact_email, const std::string &fname, const std::string &lname, long long id, const std::string &residence, const std::string &phone);
+    User(const User &other_obj); // copy constructor
     ~User();// destructor
 
     // operators:
     User& operator=(const User &obj); // operator=
+    ///User& operator+=(const User &obj); // operator overloading as member functions
     friend std::ostream& operator<<(std::ostream& out, const User &obj); // operator<<
     friend std::istream& operator>>(std::istream& in, User &obj); // operator>>
+    ///friend std::ostream& operator<<(std::ostream& out, const Reservation &obj);// operator overloading as friend/ non-member functions
 
-    // setters
-    //void setUsername(char *username);
-    //void setPassword(char *password);
-    //void setEmail(char *email);
-    //void setFirstName(std::string first_name);
-    //void setLastName(std::string last_name);
-    //void setIDNUmber(int id_number);
-    //void setIDResidence(std::string id_residence);
-    //void setPhoneNumber(std::string phone_number);
-
-    // getters
-    //const char *getUsername() const;
-    //const char *getPassword() const;
-    //const char *getEmail() const;
-    //std::string getFirstName() const;
-    //std::string getLastName() const;
-    //int getIDNumber() const;
-    //std::string getIDResidence() const;
-    //std::string getPhoneNumber() const;
-
-    // functions implemented
-    //void createAccountProcess(); // choice between tenant and host
-    //void changeAccountDetails();
-    //void checkSpellingErrors();
-    void loginMenu(User &user2);
+    void loginMenu(User &user);
+    void generateStrongPassword(User &user);
+    bool validatingChosenPassword(std::string &pswd);
+    bool validatingIDNumber(std::string &id_no);
 };
 
 #endif //OOP_USER_H

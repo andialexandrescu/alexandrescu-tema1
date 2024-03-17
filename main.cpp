@@ -10,23 +10,31 @@ using namespace std;
 
 int main() {
 
-    Apartment Ap1("Benidorm, Spain", "Rental Unit", "Apartment Ideal to enjoy Playa de Benidorm, in the heart of Playa de Poniente. Views from the living room to the ocean and the Isle of Benidorm.", 4, 823);
-    Apartment Ap2("Santona, Spain", "Duplex", "Unique oceanfront location within a few meters from the beach. Very large terrace to enjoy.", 5, 795);
-    Apartment Ap3("Altea, Spain", "Villa", "Beautiful villa with a private pool and a hot tub in Altea’s prime location, on Don Cayo golf course and nestled away from highway noise. Ideal for big families or groups.", 6, 950);
-    Apartment Ap4("Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 1466);
-    Apartment Ap5("Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 701);
-    Ap1.printApartment();
-    cout<<endl;
-    Ap2.printApartment();
-    cout<<endl;
-    Ap3.printApartment();
-    cout<<endl;
-    Ap4.printApartment();
-    cout<<endl;
+    Apartment Ap1("123", "Benidorm, Spain", "Rental Unit", "Apartment Ideal to enjoy Playa de Benidorm, in the heart of Playa de Poniente. Views from the living room to the ocean and the Isle of Benidorm.", 4, 823);
+    Apartment Ap2("127", "Santona, Spain", "Duplex", "Unique oceanfront location within a few meters from the beach. Very large terrace to enjoy.", 5, 795);
+    Reservation r1;
+    r1 += Ap1;
+    r1 += Ap2;
+    /*Apartment Ap3("323w", "Altea, Spain", "Villa", "Beautiful villa with a private pool and a hot tub in Altea’s prime location, on Don Cayo golf course and nestled away from highway noise. Ideal for big families or groups.", 6, 950);
+    Apartment Ap4("567", "Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 1466);
+    Apartment Ap5("965", "Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 701);
+    cout<<Ap1<<endl<<Ap2<<endl<<Ap3<<endl<<Ap4<<endl<<Ap5;
+    cout<<endl<<endl;
+
+    Apartment Ap6;
+    cin>>Ap6;
+    cout<<Ap6<<endl<<endl;
+
+
+    vector<Apartment> vec_apts = {Ap1, Ap2, Ap3, Ap4, Ap5, Ap6};
+    for(const auto &apt: vec_apts)
+    {
+        cout<<apt<<endl;
+    }
 
     User no1;
     cout<<no1<<endl;
-    User no2("louisarletta99", "blu3skies", "louis.arletta@gmail.com", "Louis", "Arletta", 234513427, "Puerta 728 Salida Andres Sisneros, 65, Malaga, Bal 26010", "+340223419028"); // https://testingbot.com/free-online-tools/random-address-generator
+    User no2("louisarletta9", "blu3skies", "louis.arletta@gmail.com", "Louis", "Arletta", 234513427, "Puerta 728 Salida Andres Sisneros, 65, Malaga, Bal 26010", "+340223419028"); // https://testingbot.com/free-online-tools/random-address-generator
     cout<<no2<<endl;
     User no3("yours_celestina", "swimmingenthusiast", "celestina_genevra2005@yahoo.com", "Celestina", "Genevra", 28523452, "Puerta 189 Ramal Anita Deleon 3, Sanlucar de Barrameda, Bal 74244", "+3465234563782");
     cout<<no3<<endl;
@@ -38,6 +46,11 @@ int main() {
     {
         cout<<user<<endl;
     }
+
+    User list_users;
+    ///list_users += no2; // overloading +=
+    ///cout << list_users; // overloading << once again
+    //Reservation r1(965, "Louis", "Arletta", );
 
     std::cout<<"Welcome to our apartment rental management system! Are you looking to rent an apartment while travelling OR would you like to put your apartment up for rent? Then, you're in the right place. Press any key to continue browsing.";
     std::cin.get();
@@ -61,7 +74,7 @@ int main() {
         default:
             cout<<"Invalid"<<endl;
             return 1;
-    }
+    }*/
 
     /////////////////////////////////////////////////////////////////////////
     /// Observație: dacă aveți nevoie să citiți date de intrare de la tastatură,

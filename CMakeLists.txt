@@ -99,7 +99,6 @@ add_executable(${PROJECT_NAME} main.cpp
         generated/src/Apartment.cpp
         generated/include/User.h
         generated/include/Reservation.h
-        generated/include/Card.h
         generated/src/Reservation.cpp
         generated/src/User.cpp)
 

@@ -1,5 +1,15 @@
 #include <Reservation.h>
-#include <string>
+#include <Apartment.h>
 #include <iostream>
+#include <vector>
 
-Reservation::Reservation(const User &host_user, const User &tenant_user) : host_user(host_user), tenant_user(tenant_user) {}
+Reservation &Reservation::operator+=(const Apartment &apt) {
+    apartments.push_back(apt);
+    return *this;
+}
+
+void Reservation::displayApartments() const {
+    for (const auto& apt : apartments) {
+        std::cout << apt << std::endl;
+    }
+}
