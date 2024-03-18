@@ -2,7 +2,6 @@
 #define OOP_APARTMENT_H
 
 #include <string>
-#include <User.h>
 #include <vector>
 
 class Apartment{
@@ -21,6 +20,7 @@ public:
     // these two functions are working together
     std::string CaesarCipherEncryption(std::string &host_user, int offset);
     void generateApartmentID(Apartment &obj); // one day i might to have to rewrite this, so that the list of parameters contains User &host_user as well
+    bool searchCriteria(const Apartment &obj, std::string aux_city, std::string aux_country, int no_rooms, int p) const;
 };
 
 #endif //OOP_APARTMENT_H end if not defined

@@ -60,7 +60,6 @@ std::string Apartment::CaesarCipherEncryption(std::string &host_user, int offset
             encrypted_username += char(int(host_user[i]+offset-65)%26+65);
         } else encrypted_username += char(int(host_user[i]+offset-97)%26+97);
     }
-
     return encrypted_username;
 }
 
@@ -75,5 +74,12 @@ void Apartment::generateApartmentID(Apartment &obj) {
     obj.apartment_id = CaesarCipherEncryption(host_user, offset);
 }
 
+bool Apartment::searchCriteria(const Apartment &obj, std::string aux_city, std::string aux_country, int no_rooms, int p) const {
+    std::string city, country;
+    unsigned long long comma_pos = obj.location.find(',');
+    city = obj.location.substr(0, comma_pos);
+    country = obj.location.substr(comma_pos+2, location.length()-1);
+    return ((aux_city == city || aux_country == country) && obj.no_rooms == no_rooms && obj.price_per_night <= p);
+}
 
 
