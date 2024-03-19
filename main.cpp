@@ -10,11 +10,13 @@ using namespace std;
 
 int main() {
 
-    Apartment Ap1("123", "Benidorm, Spain", "Rental Unit", "Apartment Ideal to enjoy Playa de Benidorm, in the heart of Playa de Poniente. Views from the living room to the ocean and the Isle of Benidorm.", 4, 823);
-    Apartment Ap2("127", "Santona, Spain", "Duplex", "Unique oceanfront location within a few meters from the beach. Very large terrace to enjoy.", 5, 795);
-    Apartment Ap3("323w", "Altea, Spain", "Villa", "Beautiful villa with a private pool and a hot tub in Altea’s prime location, on Don Cayo golf course and nestled away from highway noise. Ideal for big families or groups.", 6, 950);
-    Apartment Ap4("567", "Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 1466);
-    Apartment Ap5("965", "Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 701);
+    Apartment Ap1("123", "Benidorm, Spain", "Rental Unit", "Apartment Ideal to enjoy Playa de Benidorm, in the heart of Playa de Poniente. Views from the living room to the ocean and the Isle of Benidorm.", 4, 5, 823);
+    Apartment Ap2("127", "Santona, Spain", "Duplex", "Unique oceanfront location within a few meters from the beach. Very large terrace to enjoy.", 4, 6, 795);
+    Apartment Ap3("323w", "Altea, Spain", "Villa", "Beautiful villa with a private pool and a hot tub in Altea’s prime location, on Don Cayo golf course and nestled away from highway noise. Ideal for big families or groups.", 4, 4, 950);
+    Apartment Ap4("567", "Florence, Italy", "Rental Unit", "Chez Geraldine is an apartment just outside the historical center. It’s predominantly a residential district, but the cathedral, Galleria dell'Accademia, and Piazza San Marco are a 15-minute walk away. Food stores, restaurants, and bars are close by.", 3, 5, 1466);
+    Apartment Ap5("965", "Dubrovnik, Croatia", "Rental Unit", "The apartment is perched on a small hill in Montovjerna, offering stunning views of the Adriatic Sea. Dubrovnik's Old Town is around a five-minute drive away, while the nearest beach, Bellevue, is around 300 metres away.", 4, 7, 701);
+    Apartment Ap6("hdhsa", "Malaga, Spain", "Rental Unit", "Our vacation apartment with terrace and sea view is located on the beachfront, in the Huelin area. The seafront promenade and Plaza de Huelin are just 20 meters away.", 4, 7, 513);
+    Apartment Ap7("dsaa5", "A Coruna, Spain", "Mansion", "La Casa de la Pradera is located in A Bana, A Coruna, Galicia. It is located 50 km from O Grove.", 4, 4, 498);
 
     Reservation r;
     r += Ap1;
@@ -22,22 +24,24 @@ int main() {
     r += Ap3;
     r += Ap4;
     r += Ap5;
+    r += Ap6;
+    r += Ap7;
     std::cout<<r<<std::endl;
 
-    r.mainmenu(r);
+    r.searchMenu(r);
 
     //cout<<Ap1<<endl<<Ap2<<endl<<Ap3<<endl<<Ap4<<endl<<Ap5;
 
-    Apartment Ap6;
-    cin>>Ap6;
-    cout<<Ap6<<endl<<endl;
+    Apartment Ap8;
+    cin>>Ap8;
+    cout<<Ap8<<endl<<endl;
 
 
-    vector<Apartment> vec_apts = {Ap1, Ap2, Ap3, Ap4, Ap5, Ap6};
-    for(const auto &apt: vec_apts)
+    vector<Apartment> vec_apts = {Ap1, Ap2, Ap3, Ap4, Ap5, Ap6, Ap7, Ap8};
+    /*for(const auto &apt: vec_apts)
     {
         cout<<apt<<endl;
-    }
+    }*/
 
     User no1;
     cout<<no1<<endl;

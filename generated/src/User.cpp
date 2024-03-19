@@ -69,10 +69,10 @@ User& User::operator=(const User &other_obj) { // function which returns a refer
     return *this; // the returning reference part
 }
 
-/**User &User::operator+=(const User &other_obj) {
-    this->list_of_reservations_per_user.push_back(other_obj);
+User &User::operator+=(const Reservation &other_obj) {
+    list_of_reserv_per_user.push_back(other_obj);
     return *this;
-}**/
+}
 
 std::ostream &operator<<(std::ostream &out, const User &obj) {
     out<<std::endl<<"Username: @"<<obj.username<<std::endl;
@@ -90,14 +90,6 @@ std::ostream &operator<<(std::ostream &out, const User &obj) {
     out<<obj.phone_number;
     return out;
 }
-
-/**std::ostream &operator<<(std::ostream &out, const Reservation &obj) {
-    for(User user: Reservation.obj)
-    {
-        out<<user<<std::endl;
-    }
-    return out;
-}**/
 
 std::istream &operator>>(std::istream &in, User &obj) {
     char client[11];

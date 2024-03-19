@@ -9,19 +9,29 @@ Apartment::Apartment() {
     type = "Undefined";
     short_description = "None";
     no_rooms = 0;
-    price_per_night = 0;
+    no_guests = 0;
+    price_per_individual = 0;
+    reservation_status.clear();
 }
 //variant_1: initialization list - better performance, less code
 //Apartment::Apartment(std::string apt_id, std::string l, std::string t, std::string desc, int k_rooms, int p): apartment_id(apt_id), location(l), type(t), short_description(desc), no_rooms(k_rooms), price_per_night(p) {}
 //variant_2: using pointers
-Apartment::Apartment(std::string apartment_id, std::string location, std::string type, std::string short_description, int no_rooms, int price_per_night)
+Apartment::Apartment(std::string apartment_id, std::string location, std::string type, std::string short_description, int no_rooms, int no_guests, int price_per_individual)
 {
     this->apartment_id = std::move(apartment_id);
     this->location = std::move(location);
     this->type = std::move(type);
     this->short_description = std::move(short_description);
     this->no_rooms = no_rooms;
-    this->price_per_night = price_per_night;
+    this->no_guests = no_guests;
+    this->price_per_individual = price_per_individual;
+}
+
+Apartment::~Apartment() {
+    if(!this->reservation_status.empty())
+    {
+        this->reservation_status.clear();
+    }
 }
 
 std::ostream &operator<<(std::ostream &out, const Apartment &obj) {
@@ -30,7 +40,8 @@ std::ostream &operator<<(std::ostream &out, const Apartment &obj) {
     out<<"Type of apartment: "<<obj.type<<std::endl;
     out<<"Short Description: "<<obj.short_description<<std::endl;
     out<<"Number of rooms: "<<obj.no_rooms<<std::endl;
-    out<<"Price/night: "<<obj.price_per_night;
+    out<<"Number of guests: "<<obj.no_guests<<std::endl;
+    out<<"Price/night: "<<obj.price_per_individual;
     return out;
 }
 
@@ -46,8 +57,10 @@ std::istream &operator>>(std::istream &in, Apartment &obj) { // only the host/ a
     std::getline(in >> std::ws, obj.short_description);// in>>obj.short_description; in.clear(); in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout<<"Number of rooms: ";
     in>>obj.no_rooms;
+    std::cout<<"Number of guests: ";
+    in>>obj.no_guests;
     std::cout<<"Price/ night: ";
-    in>>obj.price_per_night;
+    in>>obj.price_per_individual;
     return in;
 }
 
@@ -73,13 +86,54 @@ void Apartment::generateApartmentID(Apartment &obj) {
     std::cin>>offset;
     obj.apartment_id = CaesarCipherEncryption(host_user, offset);
 }
-
-bool Apartment::searchCriteria(const Apartment &obj, std::string aux_city, std::string aux_country, int no_rooms, int p) const {
-    std::string city, country;
-    unsigned long long comma_pos = obj.location.find(',');
-    city = obj.location.substr(0, comma_pos);
-    country = obj.location.substr(comma_pos+2, location.length()-1);
-    return ((aux_city == city || aux_country == country) && obj.no_rooms == no_rooms && obj.price_per_night <= p);
+/// i should make sure if the user is stupid (the fuck wont enter the location using capitalization)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+bool Apartment::searchCriteriaLocation(const Apartment &obj, std::string city, std::string country) const {
+    std::string aux_city, aux_country;
+    unsigned long long comma_pos = obj.location.find(','); // <City, Country>
+    aux_city = obj.location.substr(0, comma_pos);
+    aux_country = obj.location.substr(comma_pos+2, location.length()-1);
+    return (aux_city == city || aux_country == country);
 }
 
+bool Apartment::searchCriteriaRooms(const Apartment &obj, int rooms, int guests, int &choice) const {
+    switch(choice)
+    {
+        case 1:
+            return (obj.no_rooms == rooms);
+        case 2:
+            return (obj.no_rooms == rooms || obj.no_guests == guests);
+        default:
+            break;
+    }
+}
 
+bool Apartment::searchCriteriaPrice(const Apartment &obj, int p) const {
+    return obj.price_per_individual <= p;
+}
+
+void Apartment::bookApartment(int day_in_the_year) {
+    reservation_status.push_back(day_in_the_year);
+}
+
+bool Apartment::isBooked(int start_date, int end_date) {
+    for(const auto r: reservation_status)
+    {
+        if (r >= start_date && r <= end_date)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+std::string Apartment::getApartmentID() const {
+    return apartment_id;
+}
+
+int Apartment::getNOGuests() const {
+    return no_guests;
+}
+
+int Apartment::getPrice_perIndividual() const {
+    return price_per_individual;
+}

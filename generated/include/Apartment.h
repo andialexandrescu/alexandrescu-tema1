@@ -11,16 +11,28 @@ private:
     std::string type;
     std::string short_description;
     int no_rooms;
-    int price_per_night;
+    int no_guests;
+    int price_per_individual;
+    std::vector<int> reservation_status; // a vector of tuples to track the days on which a certain apartment is already booked
 public:
     Apartment();
-    Apartment(std::string apt_id, std::string l, std::string t, std::string desc, int k_rooms = 0, int p = 0);// constructor definit explicit
+    Apartment(std::string apt_id, std::string l, std::string t, std::string desc, int k_rooms, int no_guests, int p);// constructor definit explicit
+    ~Apartment();
     friend std::ostream& operator<<(std::ostream& out, const Apartment &obj);
     friend std::istream& operator>>(std::istream& in, Apartment &obj);
-    // these two functions are working together
+    std::string getApartmentID() const;
+    int getNOGuests() const;
+    int getPrice_perIndividual() const;
+    // these two functions are working together (can be considered as one functionality)
     std::string CaesarCipherEncryption(std::string &host_user, int offset);
     void generateApartmentID(Apartment &obj); // one day i might to have to rewrite this, so that the list of parameters contains User &host_user as well
-    bool searchCriteria(const Apartment &obj, std::string aux_city, std::string aux_country, int no_rooms, int p) const;
+    // these three functions also work together (another functionality)
+    bool searchCriteriaLocation(const Apartment &obj, std::string city, std::string country) const;
+    bool searchCriteriaRooms(const Apartment &obj, int rooms, int guests, int &choice) const;
+    bool searchCriteriaPrice(const Apartment &obj, int p) const;
+
+    void bookApartment(int day_in_the_year);
+    bool isBooked(int start_date, int end_date);
 };
 
 #endif //OOP_APARTMENT_H end if not defined

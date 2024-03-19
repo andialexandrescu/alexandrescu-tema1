@@ -17,7 +17,7 @@ private:
     long long id_number;
     std::string id_residence;
     std::string phone_number;
-    ///std::list<Reservation> list_of_reservations_per_user;
+    std::list<Reservation> list_of_reserv_per_user;
 public:
     // overloaded constructors:
     User(); // init constructor
@@ -27,10 +27,10 @@ public:
 
     // operators:
     User& operator=(const User &obj); // operator=
-    ///User& operator+=(const User &obj); // operator overloading as member functions
+    User& operator+=(const Reservation &obj); // operator overloading as member functions
     friend std::ostream& operator<<(std::ostream& out, const User &obj); // operator<<
     friend std::istream& operator>>(std::istream& in, User &obj); // operator>>
-    ///friend std::ostream& operator<<(std::ostream& out, const Reservation &obj);// operator overloading as friend/ non-member functions
+    // operator overloading as friend/ non-member functions
 
     void loginMenu(User &user);
     void generateStrongPassword(User &user);
