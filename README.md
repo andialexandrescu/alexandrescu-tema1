@@ -1,3 +1,17 @@
+### Title: Apartment Rental Management System
+Description: It represents a management system meant to respond to inquiries based on user input. 
+The user must login with a username and password, in order to differentiate between an owner, 
+tenant and the application's admin. If the user is not yet configured, it allows the individual 
+to input his/ her details in order to create one. After the registration process, a tenant is able 
+to search for the location, date of check-in and check-out (with exact dates or flexible within a 
+specified range of days +/-), number of guests/ rooms (user must make a choice: slight difference 
+between these choices, considering an apartment might host more people due to it's capacity, however 
+it might have less rooms than initially thought - at this moment in time there's no need to specify 
+the ages of the guests yet - before checking-out you will get a discount). Based on the search criteria, 
+a list of apartments will be displayed (full-on descriptions - type of apartment + number of rooms, 
+short description, exact location, sleeping space (as in layout) (bedroom 1: 1 double bed, bedroom 2: 
+1 sofa bed, bedroom 3: 3 single beds etc.), other amenities).
+
 # Nu primesc notă pentru că nu am pus titlu și descriere
 
 ### Important!

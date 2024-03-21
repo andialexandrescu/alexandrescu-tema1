@@ -95,7 +95,12 @@ endfunction()
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME} main.cpp
-        generated/src/Helper.cpp)
+        generated/include/Apartment.h
+        generated/src/Apartment.cpp
+        generated/include/User.h
+        generated/include/Reservation.h
+        generated/src/Reservation.cpp
+        generated/src/User.cpp)
 
 ###############################################################################
 
