@@ -141,13 +141,13 @@ std::istream &operator>>(std::istream &in, User &obj) {
         }
     } while(!obj.validatingIDNumber(id_no));
     std::cout<<"ID Residence: ";
-    in>>obj.id_residence;
+    std::getline(in >> std::ws, obj.id_residence);//in>>obj.id_residence;
     std::cout<<"Phone Number: ";
     in>>obj.phone_number;
     return in;
 }
 
-void User::loginMenu(User &user) {
+void User::loginMenu(User &user, bool &credentials) {
     std::string user2, pswd2;
     std::cout<<"------- Log into your account -------"<<std::endl;
     std::cout<<"Enter you username: ";
@@ -159,13 +159,16 @@ void User::loginMenu(User &user) {
         if(user.password == pswd2)
         {
             std::cout<<std::endl<<"You are now logged in!";
+            credentials = true;
         } else
         {
-            std::cout<<std::endl<<"Incorrect password";
+            std::cout<<std::endl<<"Incorrect password.";
+            credentials = false;
         }
     } else
     {
-        std::cout<<std::endl<<"Incorrect username";
+        std::cout<<std::endl<<"Incorrect username.";
+        credentials = false;
     }
 }
 

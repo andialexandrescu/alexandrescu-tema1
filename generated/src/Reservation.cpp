@@ -4,15 +4,13 @@
 #include <vector>
 
 Reservation::Reservation() {
-    no_underage_guests = -1;
     card_number = 0;
     card_holder_name = "None";
     cvv = 0;
     l_apts.clear();
 }
 
-Reservation::Reservation(int no_underage_guests, int card_number, const std::string &card_holder_name, int cvv) {
-    this->no_underage_guests = no_underage_guests;
+Reservation::Reservation(int card_number, const std::string &card_holder_name, int cvv) {
     this->card_number = card_number;
     this->card_holder_name = card_holder_name;
     this->cvv = cvv;
@@ -31,6 +29,7 @@ Reservation &Reservation::operator+=(const Apartment &apt) {
 }
 
 std::ostream &operator<<(std::ostream &out, const Reservation &r) {
+    std::cout<<"------- Search Results -------"<<std::endl;
     for(const Apartment &apt: r.l_apts)
     {
         out<<apt<<std::endl;
@@ -154,7 +153,6 @@ void Reservation::proceedTransaction(const Reservation &r, const Apartment &apt)
             break;
         default:
             return;
-            break;
     }
     //std::cout<<"You are now at the last step of your booking. Insert your credentials: "<<std::endl;
     //std::cin>>r;

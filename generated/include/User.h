@@ -32,7 +32,7 @@ public:
     friend std::istream& operator>>(std::istream& in, User &obj); // operator>>
     // operator overloading as friend/ non-member functions
 
-    void loginMenu(User &user);
+    void loginMenu(User &user, bool &credentials);
     void generateStrongPassword(User &user);
     bool validatingChosenPassword(std::string &pswd);
     bool validatingIDNumber(std::string &id_no);

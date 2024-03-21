@@ -16,7 +16,7 @@ private:
     std::vector<int> reservation_status; // a vector of tuples to track the days on which a certain apartment is already booked
 public:
     Apartment();
-    Apartment(std::string apt_id, std::string l, std::string t, std::string desc, int k_rooms, int no_guests, int p);// constructor definit explicit
+    Apartment(std::string apartment_id, std::string location, std::string type, std::string description, int no_rooms, int no_guests, int price_per_individual);// constructor definit explicit
     ~Apartment();
     friend std::ostream& operator<<(std::ostream& out, const Apartment &obj);
     friend std::istream& operator>>(std::istream& in, Apartment &obj);

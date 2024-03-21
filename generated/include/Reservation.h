@@ -7,14 +7,13 @@
 
 class Reservation { // reservation also acts as a submenu for choosing an apartment
 private:
-    int no_underage_guests;
     int card_number;
     std::string card_holder_name;
     int cvv;
     std::vector<Apartment> l_apts;
 public:
     Reservation();
-    Reservation(int no_underage_guests, int card_number, const std::string &card_holder_name, int cvv);
+    Reservation(int card_number, const std::string &card_holder_name, int cvv);
     ~Reservation();
     Reservation& operator+=(const Apartment &apt); // operator overloading as member functions
     friend std::ostream& operator<<(std::ostream& out, const Reservation &r);// operator overloading as friend/ non-member functions
